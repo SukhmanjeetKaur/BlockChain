@@ -1,34 +1,32 @@
-pragma solidity ^0.4.18;
-contract Election {
-    struct Candidate {
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.7.0 <0.9.0;
+
+contract Election1{
+    struct Candidate{
         uint id;
         string name;
         uint voteCount;
     }
-
-    mapping(address => bool) public voters;
+    mapping( address => bool) public voters;
     mapping(uint => Candidate) public candidates;
     uint public candidatesCount;
-    event votedEvent (
-        uint indexed _candidateId
+    event votedEvent(
+        uint indexed candidateId
     );
-
-    function Election () public {
-        addCandidate("KamalHaasan");
-        addCandidate("RajniKanth");
+    function Election() public {
+        addCandidate("NihitGupta");
+        addCandidate("Prince Jaiswal");
     }
-
-    function addCandidate (string _name) private {
+    function addCandidate(string memory name ) private{
         candidatesCount ++;
-        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
+        candidates[candidatesCount] = Candidate(candidatesCount, name, 0);
     }
-
-    function vote (uint _candidateId) public {
+    function vote (uint candidateId) public {
         require(!voters[msg.sender]);
-        require(_candidateId > 0 && _candidateId <= candidatesCount);
-
+        require(candidateId > 0 && candidateId <= candidatesCount);
         voters[msg.sender] = true;
-        candidates[_candidateId].voteCount ++;
-        votedEvent (_candidateId);
+        candidates[ candidateId].voteCount++;
+        emit votedEvent(candidateId);
     }
 }
+
