@@ -1,0 +1,38 @@
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.util.Scanner;
+import java.security.NoSuchAlgorithmException;
+
+public class SHA256_t1 {
+	public static byte[] getSHA(String input) throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		return md.digest(input.getBytes(StandardCharsets.UTF_8));
+	}
+	
+	public static String toHexString(byte[] hash) {
+		BigInteger number = new BigInteger(1,hash);
+		StringBuilder hexString = new StringBuilder(number.toString(16));
+		while (hexString.length()<32)
+			hexString.insert(0, '0');
+		return hexString.toString();
+	}
+	
+	public static void main(String[] args) {
+		try {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Hash code generated for SHA-256");
+		System.out.println("Enter 1st number");
+		String num1 = s.next();
+		System.out.println(num1+": "+ toHexString(getSHA(num1)));
+		System.out.println("Enter 2nd number");
+		String num2 = s.next();
+		System.out.println(num2+": "+ toHexString(getSHA(num2)));
+		}
+		catch (NoSuchAlgorithmException e){
+			System.out.println("No Such Algorithm Exception "+e);
+		}
+		
+		
+	}
+}
