@@ -1,0 +1,21 @@
+truffle and ganache deploying
+
+Step1:  (i)Download Nodejs
+Step 2: Install truffle globally on your machine [can use same cmd]
+Command:  npm install -g truffle
+Step 3: Install ganache cli
+Command: npm install -g ganache-cli
+Step 4:  Once installed make the ganache listen by the command
+Command:ganache-cli
+Step 5: Initialize Truffle
+Command: truffle init      [To create a new project in truffle framework]
+Step 6: Create Contract
+Inside the contracts folder, write the contract in solidity and save it will “Cname.sol”  [all files]
+Step 7: compile the contract in truffle
+Command: truffle compile
+Step 8: Deploy contract in truffle framework
+Step 9: Modify  the file  truffle_config.js 
+Step 10: Truffle migration 
+Command: truffle migrate 
+Step 11: To test using truffle
+Command : truffle test.
