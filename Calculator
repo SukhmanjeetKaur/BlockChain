@@ -1,0 +1,44 @@
+pragma solidity ^0.5.0;
+contract Calculator {
+        
+    function add(int a, int b) public pure returns (int){
+        return (a+b);
+    }
+        function sub(int a, int b) public pure returns (int){
+        return (a-b);
+    }
+        function mul(int a, int b) public pure returns (int){
+        return (a*b);
+    }
+        function div(int a, int b) public pure returns (int){
+        return (a/b);
+    }
+    }
+    
+    
+    
+    Test smart contract
+
+pragma solidity >=0.7.0 <0.9.0;
+import "remix_tests.sol"; 
+import "./sample.sol";
+
+contract Test_1{
+    function check1() public{
+        calculator a=new calculator();
+        Assert.equals(a.add(2,3),5,"success");
+
+    }
+        function check2() public{
+        calculator a=new calculator();
+        Assert.equals(a.add(5,6),23,"fAIL");
+
+    }
+      function check3() public{
+        calculator a=new calculator();
+        Assert.equals(a.add(5,7),12,"success");
+
+    }
+
+
+}
