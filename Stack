@@ -1,0 +1,10 @@
+pragma solidity ^0.4.21;
+ contract Stack{
+     uint[] stack;
+     function puish(uint data) public{
+         stack.push(data);
+         }
+         function pop() public view returns (uint data){
+             data=stack[stack.length-1];
+         }
+ }
